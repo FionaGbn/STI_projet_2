@@ -10,3 +10,6 @@ if(!(isset($_SESSION['email']))) {
 
 echo $_SESSION['email'];
 
+#TODO provisoire
+header("Location:../view/userManagementView.php");
+
