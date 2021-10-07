@@ -14,7 +14,7 @@ if (isset($_GET['sender'])) {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Options</title>
+    <title>New Message</title>
 </head>
 <body>
 <h3>New Message</h3>

@@ -1,13 +1,11 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-require_once '../../../databases/config.php';
-global $connectionDb;
 session_start();
 if (!(isset($_SESSION['email']))) {
     header("Location:/view/loginView.php");
 }
+
+require_once '../../../databases/config.php';
+global $connectionDb;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['deleteItem'])) {
@@ -49,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else if (isset($_POST['writeMessage'])) {
         $sql = "INSERT INTO message (subject, body, sender, receiver) VALUES (:subject, :body, :sender, :receiver)";
         // Query the DB
-        if( !isset($_POST['subject']) || !isset($_POST['body']) || !isset($_POST['target'])){
+        if (!isset($_POST['subject']) || !isset($_POST['body']) || !isset($_POST['target'])) {
             echo "MISSING NEEDED FIELD";
             print_r($_POST);
             echo "<a href='userView.php'>Return</a>";

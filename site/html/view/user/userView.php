@@ -1,16 +1,12 @@
 <?php
 session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-require_once '../../../databases/config.php';
-global $connectionDb;
 
 if (!(isset($_SESSION['email']))) {
     header("Location:../view/loginView.php");
 }
 
+require_once '../../../databases/config.php';
+global $connectionDb;
 
 $sql = "SELECT sender, subject, date_received, id FROM message WHERE receiver = :receiver ORDER BY date_received DESC";
 if ($stmt = $connectionDb->prepare($sql)) {
@@ -26,8 +22,6 @@ if ($stmt = $connectionDb->prepare($sql)) {
 <head>
     <meta charset="UTF-8">
     <title>Webmail</title>
-    <link rel="stylesheet" href="styles/style_flights.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body class="hello">
 <a href="createMessage.php">New message</a>
@@ -42,8 +36,8 @@ if ($data = $stmt->fetchAll()) {
         echo "<h4> " . $row['subject'] . "</h4>";
         echo "date_received: " . $row['date_received'] . "<br/>";
         echo '<form name="deleteMessage" action="actionsMessage.php" method="POST">
-            <a href="createMessage.php?sender='. $row['sender'].'">Respond</a>
-            <input type="hidden" name="id"  value="' .$row['id'].'">
+            <a href="createMessage.php?sender=' . $row['sender'] . '">Respond</a>
+            <input type="hidden" name="id"  value="' . $row['id'] . '">
             <input type="submit" name="deleteItem" value="delete">
             <input type="submit" name="displayItem" value="display">
         </form>';

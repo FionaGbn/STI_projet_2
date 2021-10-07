@@ -1,3 +1,9 @@
 <?php
 
-echo password_hash("1234", PASSWORD_DEFAULT);
+session_start();
+
+if (!(isset($_SESSION['email']))) {
+    header("Location:../view/loginView.php");
+}else{
+    header("Location:../view/userView.php");
+}
