@@ -29,7 +29,7 @@ if (isset($_POST['login'])) { // check the button login was clicked
 
                         $_SESSION["role"] = $role;
                         $_SESSION["email"] = $email;
-                        header("Location: ../view/welcome.php");
+                        header("Location: ../view/user/userView.php");
                         return;
                     }
 
