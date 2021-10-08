@@ -23,14 +23,14 @@ if (isset($_POST['login'])) { // check the button login was clicked
                     if (password_verify($password, $hashed_password)) {
                         $_SESSION["role"] = $row["admin"];
                         $_SESSION["email"] = $email;
-                        header("Location: ../view/user/userView.php");
+                        header("Location: /view/user/userView.php");
                         return;
                     }
                 }
             }
         }
         session_destroy();
-        header("Location: ../view/loginView.php");
+        header("Location: /view/loginView.php");
         return;
     }
 } else {

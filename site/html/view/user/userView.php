@@ -2,7 +2,7 @@
 session_start();
 
 if (!(isset($_SESSION['email']))) {
-    header("Location:../view/loginView.php");
+    header("Location:/view/loginView.php");
 }
 
 require_once '../../../databases/config.php';
@@ -27,6 +27,11 @@ if ($stmt = $connectionDb->prepare($sql)) {
 <a href="createMessage.php">New message</a>
 <a href="modifyPassword.php">Change password</a>
 <a href="logout.php">Logout</a>
+<?php
+if ($_SESSION['role'] == 1) {
+    echo '<a href="/view/userManagementView.php">Administration</a>';
+}
+?>
 <h2>Inbox</h2>
 <?php
 if ($data = $stmt->fetchAll()) {

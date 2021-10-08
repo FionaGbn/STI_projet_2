@@ -2,7 +2,7 @@
 session_start();
 
 if (!(isset($_SESSION['email']))) {
-    header("Location: ../view/loginView.php");
+    header("Location: /view/loginView.php");
 
 } else if ($_SESSION['role'] == 0) {
     // not admin
@@ -80,6 +80,8 @@ if ($stmt = $connectionDb->prepare($query)) {
         </button>
     </form>
 </section>
+
+<a href="/view/user/userView.php">Return to message</a>
 
 </body>
 </html>

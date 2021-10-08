@@ -2,10 +2,10 @@
 session_start();
 
 if (!(isset($_SESSION['email']))) {
-    header("Location: ../view/loginView.php");
+    header("Location: /view/loginView.php");
 
 } else if ($_SESSION['role'] == 0 || !isset($_COOKIE['email'])) {
-    #TODO redirect to home page
+    header("Location: /view/user/userView.php");
 }
 ?>
 
@@ -24,7 +24,7 @@ if (!(isset($_SESSION['email']))) {
     <h2><?= $_COOKIE['email'] ?></h2>
     <form method="POST" action="../controller/userManagement.php">
 
-        <input type="hidden" name="email" value="<?= $_COOKIE['email']?>"/>
+        <input type="hidden" name="email" value="<?= $_COOKIE['email'] ?>"/>
 
         <label>
             New password

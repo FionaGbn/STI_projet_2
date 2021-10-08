@@ -6,7 +6,7 @@ require_once '../../databases/config.php';
 global $connectionDb;
 
 if (!(isset($_SESSION['email']))) {
-    header("Location: ../view/loginView.php");
+    header("Location: /view/loginView.php");
 
 } else if ($_SESSION['role'] == 0) { // Redirect to welcome if user is not admin
     #TODO change with current welcomePage
@@ -71,7 +71,7 @@ if (!(isset($_SESSION['email']))) {
                 setcookie("role", $role, 0, "/view/userEditView.php");
                 setcookie("active", $active, 0, "/view/userEditView.php");
 
-                header("Location: ../view/userEditView.php");
+                header("Location: /view/userEditView.php");
 
             } else {
                 echo "An error occurred trying to fetch the data of " . $_POST['email'];
