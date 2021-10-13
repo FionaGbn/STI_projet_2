@@ -1,19 +1,19 @@
 <?php
 session_start();
 
-//including the database connection
+// Including the database connection
 require_once '../../databases/config.php';
 global $connectionDb;
 
 if (!(isset($_SESSION['email']))) {
     header("Location: /view/loginView.php");
 
-} else if ($_SESSION['role'] == 0) { // Redirect to welcome if user is not admin
-    #TODO change with current welcomePage
-    echo "Your're not admin kiddo!";
+} else if ($_SESSION['role'] == 0) {
+    header("Location: /view/webmail/webmailView.php");
 
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    // Add user
     if (isset($_POST["user-add-btn"])) {
         $query = "INSERT INTO user ('email', 'password', 'admin', 'active') VALUES (:email, :password, :role, :active);";
 
@@ -33,8 +33,10 @@ if (!(isset($_SESSION['email']))) {
                 echo "An error occurred trying to add a new user";
             }
         }
+    }
 
-    } else if (isset($_POST["user-del-btn"])) {
+    // Delete user
+    else if (isset($_POST["user-del-btn"])) {
         $query = "DELETE FROM user WHERE email = :email;";
 
         // Prepare the query
@@ -50,7 +52,10 @@ if (!(isset($_SESSION['email']))) {
             }
         }
 
-    } else if (isset($_POST["user-edit-btn-1"])) {
+    }
+
+    // Display user edition
+    else if (isset($_POST["user-edit-btn-1"])) {
 
         // Fetch user data
         $query = "SELECT * FROM user WHERE email = :email;";
@@ -77,8 +82,10 @@ if (!(isset($_SESSION['email']))) {
                 echo "An error occurred trying to fetch the data of " . $_POST['email'];
             }
         }
+    }
 
-    } else if (isset($_POST["user-edit-btn-2"])) {
+    // Edit user
+    else if (isset($_POST["user-edit-btn-2"])) {
 
         // No new password
         if (empty($_POST['password'])) {
@@ -111,10 +118,9 @@ if (!(isset($_SESSION['email']))) {
                 echo "An error occurred trying to fetch the data of " . $_POST['email'];
             }
         }
-
     }
 
-    echo "<a href=\"../view/user/userManagementView.php\">Return</a>";
+    echo "<br/><a href=\"../view/user/userManagementView.php\">Return</a>";
 
 } else {
     echo "error";

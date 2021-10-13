@@ -5,8 +5,7 @@ if (!(isset($_SESSION['email']))) {
     header("Location: /view/loginView.php");
 
 } else if ($_SESSION['role'] == 0) {
-    // not admin
-    #TODO redirect to home page
+    header("Location: /view/webmail/webmailView.php");
 }
 
 require_once '../../../databases/config.php';
@@ -29,11 +28,14 @@ if ($stmt = $connectionDb->prepare($query)) {
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>PenguinManagement</title>
+    <title>Penguin Management</title>
 </head>
 <body>
+<?php
+include "../navigation.php";
+?>
 <h1>User management</h1>
-<p>Here you can manage the penguins, dear <?= $_SESSION['email'] ?></p>
+<p>Here you can manage the users, dear <?= $_SESSION['email'] ?></p>
 
 <section>
     <h2>Add a user</h2>

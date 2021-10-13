@@ -3,6 +3,6 @@ session_start();
 
 if (!(isset($_SESSION['email']))) {
     header("Location:../view/loginView.php");
-}else{
+} else {
     header("Location:../view/webmail/webmailView.php");
 }

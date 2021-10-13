@@ -11,31 +11,42 @@ if (isset($_GET['sender'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>New Message</title>
+    <title>Penguin New Message</title>
 </head>
 <body>
-<h3>New Message</h3>
-<form method="post" action="../../controller/actionsMessage.php" class="options-form-box">
-    <div class="classes">
-        <?php
-        echo '<label>
-            TO
-            <input type="text" name="target" value="' . $sender . '" required>
-        </label>'
-        ?>
+<?php
+include "../navigation.php";
+?>
+<h1>Webmail</h1>
+
+<section>
+    <h2>New Message</h2>
+    <form method="post" action="../../controller/actionsMessage.php">
         <label>
-            Sujet
+            To
+            <input type="text" name="target" value="<?= $sender ?>" required>
+        </label>
+
+        <label>
+            Subject
             <input type="text" name="subject" required>
         </label>
+
         <label>
-            Message
-            <input type="text" name="body" required>
+            Body
+            <input type="text" name="body" width="90px" height="90px" required>
         </label>
-    </div>
-    <button type="submit" name="writeMessage">Continue</button>
-</form>
+
+        <button type="submit" name="writeMessage">Send</button>
+    </form>
+</section>
+
+<section>
+    <a href="../webmail/webmailView.php">Return</a>
+</section>
+
 </body>
 </html>

@@ -3,7 +3,7 @@ try {
     // Create (connect to) SQLite database in file
     $connectionDb = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
 
-    // Set errormode to exceptions
+    // Set error mode to exceptions
     $connectionDb->setAttribute(PDO::ATTR_ERRMODE,
         PDO::ERRMODE_EXCEPTION);
 

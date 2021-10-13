@@ -1,28 +1,30 @@
 <?php
-
 session_start();
 if (!(isset($_SESSION['email']))) {
     header("Location:/view/loginView.php");
 }
-
 ?>
-
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Change password</title>
+    <title>Penguin new password</title>
 </head>
 <body>
-<h3>Change password</h3>
-<form method="post" action="../../controller/passwordChange.php" class="options-form-box">
-    <div class="classes">
-        <label>
-            New Password
-            <input type="password" name="password" required>
-        </label>
-    </div>
-    <button type="submit" name="changePassword">Continue</button>
+<?php
+include "../navigation.php";
+?>
+<h1>Webmail</h1>
+
+<h2>Change password</h2>
+<form method="post" action="../../controller/passwordChange.php">
+
+    <label>
+        New Password
+        <input type="password" name="password" required>
+    </label>
+
+    <button type="submit" name="changePassword">Change</button>
 </form>
 </body>
 </html>

@@ -1,7 +1,9 @@
 <?php
 session_start();
+
 require_once '../../databases/config.php';
 global $connectionDb;
+
 if (!(isset($_SESSION['email']))) {
     header("Location:/view/loginView.php");
 }
