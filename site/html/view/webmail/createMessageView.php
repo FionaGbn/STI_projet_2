@@ -18,7 +18,7 @@ if (isset($_GET['sender'])) {
 </head>
 <body>
 <h3>New Message</h3>
-<form method="post" action="actionsMessage.php" class="options-form-box">
+<form method="post" action="../../controller/actionsMessage.php" class="options-form-box">
     <div class="classes">
         <?php
         echo '<label>

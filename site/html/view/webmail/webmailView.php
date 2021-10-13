@@ -24,12 +24,12 @@ if ($stmt = $connectionDb->prepare($sql)) {
     <title>Webmail</title>
 </head>
 <body class="hello">
-<a href="createMessage.php">New message</a>
-<a href="modifyPassword.php">Change password</a>
-<a href="logout.php">Logout</a>
+<a href="createMessageView.php">New message</a>
+<a href="passwordChangeView.php">Change password</a>
+<a href="../../controller/logout.php">Logout</a>
 <?php
 if ($_SESSION['role'] == 1) {
-    echo '<a href="/view/userManagementView.php">Administration</a>';
+    echo '<a href="../user/userManagementView.php">Administration</a>';
 }
 ?>
 <h2>Inbox</h2>
@@ -40,8 +40,8 @@ if ($data = $stmt->fetchAll()) {
         echo "<h3> " . $row['sender'] . "</h3>";
         echo "<h4> " . $row['subject'] . "</h4>";
         echo "date_received: " . $row['date_received'] . "<br/>";
-        echo '<form name="deleteMessage" action="actionsMessage.php" method="POST">
-            <a href="createMessage.php?sender=' . $row['sender'] . '">Respond</a>
+        echo '<form name="deleteMessage" action="../../controller/actionsMessage.php" method="POST">
+            <a href="createMessageView.php?sender=' . $row['sender'] . '">Respond</a>
             <input type="hidden" name="id"  value="' . $row['id'] . '">
             <input type="submit" name="deleteItem" value="delete">
             <input type="submit" name="displayItem" value="display">

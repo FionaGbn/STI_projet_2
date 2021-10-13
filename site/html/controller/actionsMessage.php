@@ -1,10 +1,10 @@
 <?php
 session_start();
 if (!(isset($_SESSION['email']))) {
-    header("Location:/view/loginView.php");
+    header("Location: /view/loginView.php");
 }
 
-require_once '../../../databases/config.php';
+require_once '../../databases/config.php';
 global $connectionDb;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (!$stmt->execute()) {
                 echo "ERROR";
             } else {
-                header("Location: /view/user/userView.php");
+                header("Location: /view/webmail/webmailView.php");
             }
         }
     } else if (isset($_POST['displayItem'])) {
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo "<h4> " . $data['subject'] . "</h4>";
                     echo "date_received: " . $data['date_received'] . "<br/>";
                     echo "body: " . $data['body'] . "<br/>";
-                    echo "<a href='userView.php'>RETURN</a>";
+                    echo "<a href='../view/webmail/webmailView.php'>RETURN</a>";
                     echo "</div>";
                 }
             }
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!isset($_POST['subject']) || !isset($_POST['body']) || !isset($_POST['target'])) {
             echo "MISSING NEEDED FIELD";
             print_r($_POST);
-            echo "<a href='userView.php'>Return</a>";
+            echo "<a href='../view/webmail/webmailView.php'>Return</a>";
         }
 
         if ($stmt = $connectionDb->prepare($sql)) {
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (!$stmt->execute()) {
                 echo "ERROR";
             } else {
-                header("Location: /view/user/userView.php");
+                header("Location: /view/webmail/webmailView.php");
             }
         }
     }

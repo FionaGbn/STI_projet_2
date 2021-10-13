@@ -9,7 +9,7 @@ if (!(isset($_SESSION['email']))) {
     #TODO redirect to home page
 }
 
-require_once '../../databases/config.php';
+require_once '../../../databases/config.php';
 global $connectionDb;
 
 $query = "SELECT email FROM user";
@@ -37,7 +37,7 @@ if ($stmt = $connectionDb->prepare($query)) {
 
 <section>
     <h2>Add a user</h2>
-    <form method="POST" action="../controller/userManagement.php">
+    <form method="POST" action="../../controller/userManagement.php">
         <label>
             Email
             <input type="text" name="email" required="required"/>
@@ -68,9 +68,9 @@ if ($stmt = $connectionDb->prepare($query)) {
 
 <section>
     <h2>Edit a user</h2>
-    <form method="POST" action="../controller/userManagement.php">
+    <form method="POST" action="../../controller/userManagement.php">
         <?php
-        require_once '../util/dynamicSelect.php';
+        require_once '../../util/dynamicSelect.php';
         echo dynamic_select($userList, 'email', 'Email', ''); ?>
         <button name="user-del-btn">
             Delete
@@ -81,7 +81,7 @@ if ($stmt = $connectionDb->prepare($query)) {
     </form>
 </section>
 
-<a href="/view/user/userView.php">Return to message</a>
+<a href="../webmail/webmailView.php">Return to message</a>
 
 </body>
 </html>

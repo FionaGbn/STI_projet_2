@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../../databases/config.php';
+require_once '../../databases/config.php';
 global $connectionDb;
 if (!(isset($_SESSION['email']))) {
     header("Location:/view/loginView.php");
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "ERROR";
             } else {
                 echo "WHY";
-                header("Location: /view/user/userView.php");
+                header("Location: /view/webmail/webmailView.php");
             }
         }
     }

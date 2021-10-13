@@ -67,11 +67,11 @@ if (!(isset($_SESSION['email']))) {
                 $active = $row[3];
 
                 // Having fun with cookies
-                setcookie("email", $_POST['email'], 0, "/view/userEditView.php");
-                setcookie("role", $role, 0, "/view/userEditView.php");
-                setcookie("active", $active, 0, "/view/userEditView.php");
+                setcookie("email", $_POST['email'], 0, "/view/user/userEditView.php");
+                setcookie("role", $role, 0, "/view/user/userEditView.php");
+                setcookie("active", $active, 0, "/view/user/userEditView.php");
 
-                header("Location: /view/userEditView.php");
+                header("Location: /view/user/userEditView.php");
 
             } else {
                 echo "An error occurred trying to fetch the data of " . $_POST['email'];
@@ -114,7 +114,7 @@ if (!(isset($_SESSION['email']))) {
 
     }
 
-    echo "<a href=\"../view/userManagementView.php\">Return</a>";
+    echo "<a href=\"../view/user/userManagementView.php\">Return</a>";
 
 } else {
     echo "error";

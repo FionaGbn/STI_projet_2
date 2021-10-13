@@ -15,11 +15,11 @@ if (!(isset($_SESSION['email']))) {
 </head>
 <body>
 <h3>Change password</h3>
-<form method="post" action="passwordChange.php" class="options-form-box">
+<form method="post" action="../../controller/passwordChange.php" class="options-form-box">
     <div class="classes">
         <label>
             New Password
-            <input type="text" name="password" required>
+            <input type="password" name="password" required>
         </label>
     </div>
     <button type="submit" name="changePassword">Continue</button>

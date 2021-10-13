@@ -1,11 +1,15 @@
 <?php
 session_start();
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if (!(isset($_SESSION['email']))) {
     header("Location: /view/loginView.php");
 
 } else if ($_SESSION['role'] == 0 || !isset($_COOKIE['email'])) {
-    header("Location: /view/user/userView.php");
+    header("Location: /view/webmail/webmailView.php");
 }
 ?>
 
@@ -22,7 +26,7 @@ if (!(isset($_SESSION['email']))) {
 <section>
 
     <h2><?= $_COOKIE['email'] ?></h2>
-    <form method="POST" action="../controller/userManagement.php">
+    <form method="POST" action="../../controller/userManagement.php">
 
         <input type="hidden" name="email" value="<?= $_COOKIE['email'] ?>"/>
 
