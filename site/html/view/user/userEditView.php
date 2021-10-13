@@ -20,11 +20,11 @@ if (!(isset($_SESSION['email']))) {
 <?php
 include "../navigation.php";
 ?>
-<h1>User editor</h1>
+<h2>User editor</h2>
 
 <section>
 
-    <h2><?= $_COOKIE['email'] ?></h2>
+    <h3><?= $_COOKIE['email'] ?></h3>
     <form method="POST" action="../../controller/userManagement.php">
 
         <input type="hidden" name="email" value="<?= $_COOKIE['email'] ?>"/>
@@ -52,6 +52,9 @@ include "../navigation.php";
         </button>
     </form>
 </section>
+
+<br/>
+<a href="userManagementView.php">Return</a>
 
 </body>
 </html>

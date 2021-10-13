@@ -14,7 +14,6 @@ if (!(isset($_SESSION['email']))) {
 <?php
 include "../navigation.php";
 ?>
-<h1>Webmail</h1>
 
 <h2>Change password</h2>
 <form method="post" action="../../controller/passwordChange.php">
@@ -26,5 +25,8 @@ include "../navigation.php";
 
     <button type="submit" name="changePassword">Change</button>
 </form>
+
+<br/>
+<a href="../webmail/webmailView.php">Return</a>
 </body>
 </html>

@@ -6,6 +6,9 @@
     <title>PenguLogin</title>
 </head>
 <body>
+<h1>Login</h1>
+<p>Welcome, please sign in.</p>
+
 <form method="POST" action="../controller/login.php">
     <label>
         Email

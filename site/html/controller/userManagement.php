@@ -13,6 +13,9 @@ if (!(isset($_SESSION['email']))) {
 
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    include "../view/navigation.php";
+    echo "<br/>";
+
     // Add user
     if (isset($_POST["user-add-btn"])) {
         $query = "INSERT INTO user ('email', 'password', 'admin', 'active') VALUES (:email, :password, :role, :active);";
@@ -112,6 +115,7 @@ if (!(isset($_SESSION['email']))) {
             }
 
             if ($stmt->execute()) {
+
                 echo "User " . $_POST['email'] . " has been updated";
 
             } else {
@@ -120,7 +124,7 @@ if (!(isset($_SESSION['email']))) {
         }
     }
 
-    echo "<br/><a href=\"../view/user/userManagementView.php\">Return</a>";
+    echo "<br/><br/><a href=\"../view/user/userManagementView.php\">Return</a>";
 
 } else {
     echo "error";

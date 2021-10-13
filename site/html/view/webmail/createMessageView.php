@@ -20,33 +20,36 @@ if (isset($_GET['sender'])) {
 <?php
 include "../navigation.php";
 ?>
-<h1>Webmail</h1>
-
 <section>
     <h2>New Message</h2>
     <form method="post" action="../../controller/actionsMessage.php">
-        <label>
-            To
-            <input type="text" name="target" value="<?= $sender ?>" required>
-        </label>
 
         <label>
-            Subject
+            To:
+            <input type="text" name="target" value="<?= $sender ?>" required>
+        </label>
+        <br/>
+
+        <label>
+            Subject:
             <input type="text" name="subject" required>
         </label>
 
-        <label>
-            Body
-            <input type="text" name="body" width="90px" height="90px" required>
-        </label>
+        <br/>
 
+        <label>
+            Body:
+            <br/>
+            <textarea name="body" rows="10" cols="50" required></textarea>
+        </label>
+        <br/>
         <button type="submit" name="writeMessage">Send</button>
+
     </form>
 </section>
 
-<section>
-    <a href="../webmail/webmailView.php">Return</a>
-</section>
+<br/>
+<a href="../webmail/webmailView.php">Return</a>
 
 </body>
 </html>

@@ -34,11 +34,11 @@ if ($stmt = $connectionDb->prepare($query)) {
 <?php
 include "../navigation.php";
 ?>
-<h1>User management</h1>
+<h2>User management</h2>
 <p>Here you can manage the users, dear <?= $_SESSION['email'] ?></p>
 
 <section>
-    <h2>Add a user</h2>
+    <h3>Add a user</h3>
     <form method="POST" action="../../controller/userManagement.php">
         <label>
             Email
@@ -69,7 +69,7 @@ include "../navigation.php";
 </section>
 
 <section>
-    <h2>Edit a user</h2>
+    <h3>Edit a user</h3>
     <form method="POST" action="../../controller/userManagement.php">
         <?php
         require_once '../../util/dynamicSelect.php';
@@ -83,7 +83,9 @@ include "../navigation.php";
     </form>
 </section>
 
-<a href="../webmail/webmailView.php">Return to message</a>
+<br/>
+
+<a href="../webmail/webmailView.php">Return</a>
 
 </body>
 </html>
