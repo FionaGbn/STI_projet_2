@@ -1,7 +1,7 @@
-# STI project | Penguin messenger
-Besseau Léonard, Do Vale Lopes Miguel 
+# STI project 2 | Penguin messenger
+Gamboni Fiona, Do Vale Lopes Miguel 
 
-13.10.2021
+16.01.2021
 
 
 
