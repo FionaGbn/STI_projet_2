@@ -8,6 +8,9 @@ if (!(isset($_SESSION['email']))) {
     header("Location: /view/webmail/webmailView.php");
 }
 
+// Generate anti-CSRF token
+$_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(35));
+
 require_once '../../../databases/config.php';
 global $connectionDb;
 
@@ -62,6 +65,7 @@ include "../navigation.php";
                 <option value="0">no</option>
             </select>
         </label>
+        <input type="hidden" name="token" value="<?= isset($_SESSION['token']) ? $_SESSION['token'] : '' ?>">
         <button name="user-add-btn">
             Add
         </button>
@@ -74,6 +78,7 @@ include "../navigation.php";
         <?php
         require_once '../../util/dynamicSelect.php';
         echo dynamic_select($userList, 'email', 'Email', ''); ?>
+        <input type="hidden" name="token" value="<?= isset($_SESSION['token']) ? $_SESSION['token'] : '' ?>">
         <button name="user-del-btn">
             Delete
         </button>

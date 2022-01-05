@@ -5,6 +5,9 @@ if (!(isset($_SESSION['email']))) {
     header("Location:/view/loginView.php");
 }
 
+// Generate anti-CSRF token
+$_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(35));
+
 require_once '../../../databases/config.php';
 global $connectionDb;
 
@@ -39,6 +42,7 @@ if ($data = $stmt->fetchAll()) {
         echo '<form name="deleteMessage" action="../../controller/actionsMessage.php" method="POST">
             <a href="createMessageView.php?sender=' . htmlspecialchars($row['sender'], ENT_QUOTES) . '">Respond</a>
             <input type="hidden" name="id"  value="' . htmlspecialchars($row['id'], ENT_QUOTES) . '">
+            <input type="hidden" name="token" value="' . (isset($_SESSION['token']) ? $_SESSION['token'] : null) . '">
             <input type="submit" name="deleteItem" value="delete">
             <input type="submit" name="displayItem" value="display">
         </form>';

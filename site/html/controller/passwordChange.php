@@ -9,6 +9,15 @@ if (!(isset($_SESSION['email']))) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // Check for anti-CSRF token
+    $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+    if (!$token || $token !== $_SESSION['token']) {
+        // return 403 http status code
+        header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
+        exit;
+    }
+
     if (isset($_POST['changePassword']) && isset($_POST['password'])) {
         $sql = "UPDATE user SET password = :password WHERE email = :receiver";
         // Query the DB

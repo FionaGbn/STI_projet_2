@@ -7,6 +7,10 @@ if (!(isset($_SESSION['email']))) {
 } else if ($_SESSION['role'] == 0 || !isset($_COOKIE['email'])) {
     header("Location: /view/webmail/webmailView.php");
 }
+
+// Generate anti-CSRF token
+$_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(35));
+
 ?>
 
 <!DOCTYPE html>
@@ -47,6 +51,7 @@ include "../navigation.php";
                 <option value="0" <?php echo $_COOKIE['active'] == 0 ? "selected" : null; ?> >no</option>
             </select>
         </label>
+        <input type="hidden" name="token" value="<?= isset($_SESSION['token']) ? $_SESSION['token'] : '' ?>">
         <button name="user-edit-btn-2">
             Edit
         </button>

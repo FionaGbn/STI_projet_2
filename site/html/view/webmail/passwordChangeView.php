@@ -3,6 +3,10 @@ session_start();
 if (!(isset($_SESSION['email']))) {
     header("Location:/view/loginView.php");
 }
+
+// Generate anti-CSRF token
+$_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(35));
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +26,7 @@ include "../navigation.php";
         New Password
         <input type="password" name="password" required>
     </label>
+    <input type="hidden" name="token" value="<?= isset($_SESSION['token']) ? $_SESSION['token'] : '' ?>">
 
     <button type="submit" name="changePassword">Change</button>
 </form>

@@ -4,6 +4,10 @@ if (!(isset($_SESSION['email']))) {
     header("Location:/view/loginView.php");
 }
 
+// Generate anti-CSRF token
+$_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(35));
+
+// Get the sender
 if (isset($_GET['sender'])) {
     $sender = $_GET['sender'];
 } else {
@@ -43,6 +47,7 @@ include "../navigation.php";
             <textarea name="body" rows="10" cols="50" required></textarea>
         </label>
         <br/>
+        <input type="hidden" name="token" value="<?= isset($_SESSION['token']) ? $_SESSION['token'] : '' ?>">
         <button type="submit" name="writeMessage">Send</button>
 
     </form>

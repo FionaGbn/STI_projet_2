@@ -18,6 +18,15 @@ if (!(isset($_SESSION['email']))) {
 
     // Add user
     if (isset($_POST["user-add-btn"])) {
+
+        // Check for anti-CSRF token
+        $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+        if (!$token || $token !== $_SESSION['token']) {
+            // return 403 http status code
+            header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
+            exit;
+        }
+
         $query = "INSERT INTO user ('email', 'password', 'admin', 'active') VALUES (:email, :password, :role, :active);";
 
         // Prepare the query
@@ -40,6 +49,15 @@ if (!(isset($_SESSION['email']))) {
 
     // Delete user
     else if (isset($_POST["user-del-btn"])) {
+
+        // Check for anti-CSRF token
+        $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+        if (!$token || $token !== $_SESSION['token']) {
+            // return 403 http status code
+            header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
+            exit;
+        }
+
         $query = "DELETE FROM user WHERE email = :email;";
 
         // Prepare the query
@@ -89,6 +107,14 @@ if (!(isset($_SESSION['email']))) {
 
     // Edit user
     else if (isset($_POST["user-edit-btn-2"])) {
+
+        // Check for anti-CSRF token
+        $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+        if (!$token || $token !== $_SESSION['token']) {
+            // return 403 http status code
+            header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
+            exit;
+        }
 
         // No new password
         if (empty($_POST['password'])) {

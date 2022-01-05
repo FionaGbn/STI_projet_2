@@ -11,6 +11,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Delete message
     if (isset($_POST['deleteItem'])) {
+
+        // Check for anti-CSRF token
+        $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+        if (!$token || $token !== $_SESSION['token']) {
+            // return 403 http status code
+            header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
+            exit;
+        }
+
         $sql = "DELETE FROM message WHERE id = :id AND receiver = :receiver";
         // Query the DB
         if ($stmt = $connectionDb->prepare($sql)) {
@@ -54,6 +63,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // New message
     else if (isset($_POST['writeMessage'])) {
+
+        // Check for anti-CSRF token
+        $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+        if (!$token || $token !== $_SESSION['token']) {
+            // return 403 http status code
+            header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
+            exit;
+        }
+
         $sql = "INSERT INTO message (subject, body, sender, receiver) VALUES (:subject, :body, :sender, :receiver)";
         // Query the DB
         if (!isset($_POST['subject']) || !isset($_POST['body']) || !isset($_POST['target'])) {
