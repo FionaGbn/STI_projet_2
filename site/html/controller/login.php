@@ -7,6 +7,11 @@ global $connectionDb;
 
 if (isset($_POST['login'])) { // check the button login was clicked
 
+    // Set login attempt if not set
+    if (!isset($_SESSION['attempt'])) {
+        $_SESSION['attempt'] = 0;
+    }
+
     // Get user email and password
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -25,11 +30,23 @@ if (isset($_POST['login'])) { // check the button login was clicked
                         $_SESSION["email"] = $email;
                         header("Location: /view/webmail/webmailView.php");
                         return;
+                    } else {
+                        $_SESSION['attempt'] += 1;
+                        // After 3 attempts, user's account becomes inactive
+                        if ($_SESSION['attempt'] == 3) {
+                            $query = "UPDATE user SET active = 0 WHERE email = :email;";
+                            if ($stmt = $connectionDb->prepare($query)) {
+                                $stmt->bindParam(':email', $email);
+                                $stmt->execute();
+                            }
+                            echo "This account has been blocked due to many failed attempts. Please contact an admin.";
+                            echo '<a href="/view/loginView.php">Return</a>';
+                            exit;
+                        }
                     }
                 }
             }
         }
-        session_destroy();
         header("Location: /view/loginView.php");
         return;
     }

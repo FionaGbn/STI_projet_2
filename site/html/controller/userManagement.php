@@ -120,6 +120,15 @@ if (!(isset($_SESSION['email']))) {
         if (empty($_POST['password'])) {
             $query = "UPDATE user SET admin = :role, active = :active WHERE email = :email;";
         } else {
+
+            // Validate password strength
+            $passwdIsValid = preg_match('@^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? ";,_-]).*$@', $_POST['password']);
+            if(!$passwdIsValid) {
+                echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
+                echo '<br/><a href="/view/user/userManagementView.php">Return</a>';
+                exit;
+            }
+
             $query = "UPDATE user SET  password = :hash, admin = :role, active = :active WHERE email = :email;";
             $updatePasswd = true;
         }
