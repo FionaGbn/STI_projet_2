@@ -35,7 +35,7 @@ if ($stmt = $connectionDb->prepare($query)) {
 include "../navigation.php";
 ?>
 <h2>User management</h2>
-<p>Here you can manage the users, dear <?= $_SESSION['email'] ?></p>
+<p>Here you can manage the users, dear <?= htmlspecialchars($_SESSION['email'], ENT_QUOTES) ?></p>
 
 <section>
     <h3>Add a user</h3>

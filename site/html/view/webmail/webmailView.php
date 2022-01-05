@@ -33,12 +33,12 @@ include "../navigation.php";
 if ($data = $stmt->fetchAll()) {
     foreach ($data as $row) {
         echo "<div class=\"message\">";
-        echo "<h3>From: " . $row['sender'] . "</h3>";
-        echo "<h4>Subject: " . $row['subject'] . "</h4>";
-        echo "Date: " . $row['date_received'] . "<br/>";
+        echo "<h3>From: " . htmlspecialchars($row['sender'], ENT_QUOTES) . "</h3>";
+        echo "<h4>Subject: " . htmlspecialchars($row['subject'], ENT_QUOTES) . "</h4>";
+        echo "Date: " . htmlspecialchars($row['date_received'], ENT_QUOTES) . "<br/>";
         echo '<form name="deleteMessage" action="../../controller/actionsMessage.php" method="POST">
-            <a href="createMessageView.php?sender=' . $row['sender'] . '">Respond</a>
-            <input type="hidden" name="id"  value="' . $row['id'] . '">
+            <a href="createMessageView.php?sender=' . htmlspecialchars($row['sender'], ENT_QUOTES) . '">Respond</a>
+            <input type="hidden" name="id"  value="' . htmlspecialchars($row['id'], ENT_QUOTES) . '">
             <input type="submit" name="deleteItem" value="delete">
             <input type="submit" name="displayItem" value="display">
         </form>';

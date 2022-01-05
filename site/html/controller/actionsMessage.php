@@ -41,10 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($data = $stmt->fetch()) {
                     include "../view/navigation.php";
                     echo "<div class=\"message\">";
-                    echo "<h3>From: " . $data['sender'] . "</h3>";
-                    echo "<h4>Subject: " . $data['subject'] . "</h4>";
-                    echo "Date: " . $data['date_received'] . "<br/>";
-                    echo "Body:<br/>" . $data['body'] . "<br/><br/>";
+                    echo "<h3>From: " . htmlspecialchars($data['sender'], ENT_QUOTES) . "</h3>";
+                    echo "<h4>Subject: " . htmlspecialchars($data['subject'], ENT_QUOTES) . "</h4>";
+                    echo "Date: " . htmlspecialchars($data['date_received'], ENT_QUOTES) . "<br/>";
+                    echo "Body:<br/>" . htmlspecialchars($data['body'], ENT_QUOTES) . "<br/><br/>";
                     echo "<a href='../view/webmail/webmailView.php'>Return</a>";
                     echo "</div>";
                 }

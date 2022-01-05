@@ -24,7 +24,7 @@ include "../navigation.php";
 
 <section>
 
-    <h3><?= $_COOKIE['email'] ?></h3>
+    <h3><?= htmlspecialchars($_COOKIE['email'], ENT_QUOTES) ?></h3>
     <form method="POST" action="../../controller/userManagement.php">
 
         <input type="hidden" name="email" value="<?= $_COOKIE['email'] ?>"/>
