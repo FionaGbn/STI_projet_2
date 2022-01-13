@@ -1,7 +1,9 @@
-# STI project 2 | Penguin messenger
+# STI project 2 | Secure Penguin messenger
 Gamboni Fiona, Do Vale Lopes Miguel 
 
-16.01.2021
+13.01.2021
+
+The base project is available [here](https://github.com/K-do/STI_projet_1).
 
 
 
@@ -34,7 +36,7 @@ Before going any further with the website. Please check that your directory `dat
 In Linux:
 
 ```bash
-chmod o+w site/database site/database/database.sqlite
+chmod o+w site/databases site/databases/database.sqlite
 ```
 
 
@@ -49,12 +51,12 @@ This is the first page, you will see when accessing the website:
 
 We provided you two accounts to play with:
 
-| email              | password | role         |
-| :----------------- | -------- | ------------ |
-| admin@penguin.ice  | 1234     | admin        |
-| colabo@penguin.ice | 4321     | collaborator |
+| email              | password   | role          |
+| :----------------- | ---------- | ------------- |
+| admin@penguin.ice  | Password4? | adminastrator |
+| colabo@penguin.ice | Graou_420  | collaborator  |
 
-
+**Attention:** After three failed attempts, the account becomes inactive, an administrator supervision is then required to unlock the account.  
 
 ### Home page
 
