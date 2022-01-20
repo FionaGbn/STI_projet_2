@@ -1,7 +1,7 @@
 # STI project 2 | Secure Penguin messenger
 Gamboni Fiona, Do Vale Lopes Miguel 
 
-20.01.2021
+20.01.2022
 
 The base project is available [here](https://github.com/K-do/STI_projet_1).
 
