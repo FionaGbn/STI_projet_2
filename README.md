@@ -1,7 +1,7 @@
 # STI project 2 | Secure Penguin messenger
 Gamboni Fiona, Do Vale Lopes Miguel 
 
-13.01.2021
+20.01.2021
 
 The base project is available [here](https://github.com/K-do/STI_projet_1).
 
@@ -42,6 +42,16 @@ chmod o+w site/databases site/databases/database.sqlite
 
 
 ## Manual
+
+### DB management
+
+Use this password to access and manage the DB from http://localhost:8080/phpliteadmin.php :
+
+```
+gr4Ug3!u5l_P
+```
+
+![image-20220120134253671](figures/image-20220120134253671.png)
 
 ### Login
 

@@ -44,7 +44,7 @@
 // Please see https://bitbucket.org/phpliteadmin/public/wiki/Configuration for more details
 
 //password to gain access
-$password = 'admin';
+$password = 'gr4Ug3!u5l_P';
 
 //directory relative to this file to search for databases (if false, manually list databases in the $databases variable)
 $directory = false;
